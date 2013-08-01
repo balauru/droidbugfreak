@@ -49,8 +49,14 @@ public class AgileReporter implements ReportingService {
 
     Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
       @Override
-      public void uncaughtException(Thread thread, Throwable ex) {
-        instance.beginReport(ex);
+      public void uncaughtException(Thread thread, final Throwable ex) {
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            instance.beginReport(ex);
+	    AgileReporter.dispose();
+          }
+        }).start();
       }
     });
   }
