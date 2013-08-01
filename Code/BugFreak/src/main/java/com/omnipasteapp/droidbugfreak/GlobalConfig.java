@@ -11,7 +11,7 @@ public class GlobalConfig {
     private static String token;
 
     public static String getServiceEndPoint() {
-      return serviceEndPoint;
+      return Settings.serviceEndPoint;
     }
 
     public static void setServiceEndPoint(String serviceEndPoint) {
@@ -19,7 +19,7 @@ public class GlobalConfig {
     }
 
     public static String getApiKey() {
-      return apiKey;
+      return Settings.apiKey;
     }
 
     public static void setApiKey(String apiKey) {
@@ -27,7 +27,7 @@ public class GlobalConfig {
     }
 
     public static String getToken() {
-      return token;
+      return Settings.token;
     }
 
     public static void setToken(String token) {

@@ -27,13 +27,13 @@ public class Initializer {
   }
 
   private static void verifySettings() throws IllegalArgumentException {
-    if (!StringUtils.isNullOrEmpty(GlobalConfig.Settings.getToken())) {
+    if (StringUtils.isNullOrEmpty(GlobalConfig.Settings.getToken())) {
       throw new IllegalArgumentException("Token not set");
     }
     if (!isValidUrl(GlobalConfig.Settings.getServiceEndPoint())) {
       throw new IllegalArgumentException("Invalid Service End Point");
     }
-    if (!StringUtils.isNullOrEmpty(GlobalConfig.Settings.getApiKey())) {
+    if (StringUtils.isNullOrEmpty(GlobalConfig.Settings.getApiKey())) {
       throw new IllegalArgumentException("Api Key not set");
     }
   }
