@@ -11,7 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class ReportRequestBuilderImpl implements ReportRequestBuilder {
-  public final String ApiKey = "ApiKey";
+  public final String ApiKey = "Api-Key";
   public final String TokenKey = "Token";
   public final String HttpMethod = "POST";
 
