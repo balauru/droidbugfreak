@@ -60,5 +60,6 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
 
   public void setMethod(HttpURLConnection conn) throws Exception {
     conn.setRequestMethod(HttpMethod);
+    conn.setDoOutput(true);
   }
 }

@@ -17,7 +17,8 @@ public class RemoteErrorReportStorage implements ErrorReportStorage {
   public boolean save(ErrorReport errorReport) throws Throwable {
     HttpURLConnection conn = reportRequestBuilder.build(errorReport);
 
-    conn.getInputStream();
+    conn.connect();
+    conn.getResponseCode();
 
     if (conn != null) {
       conn.disconnect();
