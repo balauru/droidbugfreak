@@ -33,13 +33,15 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
   private void write(ErrorReport report, HttpURLConnection request) throws IOException {
     ErrorReportSerializer serializer = GlobalConfig.getServiceLocator().getService(ErrorReportSerializer.class);
 
+    String output = serializer.serialize(report);
     request.setRequestProperty("Content-Type", serializer.getContentType());
+    request.setRequestProperty("Content-Length", Integer.toString(output.length()));
 
     OutputStream outputStream = request.getOutputStream();
     OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream);
     BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
 
-    bufferedWriter.write(serializer.serialize(report));
+    bufferedWriter.write(output);
 
     bufferedWriter.flush();
     bufferedWriter.close();
