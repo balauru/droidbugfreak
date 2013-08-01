@@ -8,7 +8,6 @@ public class GlobalConfig {
   public static class Settings {
     private static String serviceEndPoint;
     private static String apiKey;
-    private static String appName;
     private static String token;
 
     public static String getServiceEndPoint() {
@@ -25,14 +24,6 @@ public class GlobalConfig {
 
     public static void setApiKey(String apiKey) {
       Settings.apiKey = apiKey;
-    }
-
-    public static String getAppName() {
-      return appName;
-    }
-
-    public static void setAppName(String appName) {
-      Settings.appName = appName;
     }
 
     public static String getToken() {
@@ -63,3 +54,4 @@ public class GlobalConfig {
     GlobalConfig.errorReportSerializer = errorReportSerializer;
   }
 }
+

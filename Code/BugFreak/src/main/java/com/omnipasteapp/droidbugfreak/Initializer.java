@@ -27,9 +27,6 @@ public class Initializer {
   }
 
   private static void verifySettings() throws IllegalArgumentException {
-    if (!StringUtils.isNullOrEmpty(GlobalConfig.Settings.getAppName())) {
-      throw new IllegalArgumentException("AppName not set");
-    }
     if (!StringUtils.isNullOrEmpty(GlobalConfig.Settings.getToken())) {
       throw new IllegalArgumentException("Token not set");
     }

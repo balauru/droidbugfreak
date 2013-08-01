@@ -14,7 +14,6 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
   public final String ApiKey = "ApiKey";
   public final String TokenKey = "Token";
   public final String HttpMethod = "POST";
-  public final String AppNameKey = "AppName";
 
   @Override
   public HttpURLConnection build(ErrorReport report) {
@@ -50,7 +49,6 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
   private void sign(HttpURLConnection request) {
     request.setRequestProperty(ApiKey, GlobalConfig.Settings.getApiKey());
     request.setRequestProperty(TokenKey, GlobalConfig.Settings.getToken());
-    request.setRequestProperty(AppNameKey, GlobalConfig.Settings.getAppName());
   }
 
   private HttpURLConnection createConnection() throws Exception {
