@@ -1,4 +1,4 @@
-package com.omnipasteapp.droidbugfreak.collections.collections;
+package com.omnipasteapp.droidbugfreak.collections;
 
 import com.omnipasteapp.droidbugfreak.framework.EventHandler;
 

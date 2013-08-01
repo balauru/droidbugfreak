@@ -1,7 +1,7 @@
 package com.omnipasteapp.droidbugfreak.components;
 
 import com.omnipasteapp.droidbugfreak.ErrorReport;
-import com.omnipasteapp.droidbugfreak.collections.collections.ObservableList;
+import com.omnipasteapp.droidbugfreak.collections.ObservableList;
 
 public class ErrorReportQueueImpl extends ObservableList<ErrorReport> implements ErrorReportQueue {
 
