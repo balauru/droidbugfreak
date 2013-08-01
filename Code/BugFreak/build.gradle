@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'android-library'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+version '1.0.0'
+group 'com.omnipasteapp.droidbugfreak'
+
+configurations {
+    archives {
+        extendsFrom configurations.default
+    }
+}
+
+signing {
+    required { has('release') && gradle.taskGraph.hasTask('uploadArchives') }
+    sign configurations.archives
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        beforeDeployment { deployment -> signing.signPom(deployment) }
+
+        repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2/') {
+            authentication(userName: 'bugfreak',
+                    password: 'ArtLine123')
+        }
+
+        pom.project {
+            name 'DroidBugFreak'
+            packaging 'aar'
+            description 'Android error reporting '
+            url 'https://github.com/Agilefreaks/droidbugfreak'
+
+            scm {
+                url 'scm:git@github.com:Agilefreaks/droidbugfreak.git'
+                connection 'scm:git@github.com:Agilefreaks/droidbugfreak.git'
+                developerConnection 'scm:git@github.com:Agilefreaks/droidbugfreak.git'
+            }
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'dev'
+                    name 'Dev'
+                    email 'dev@omnipasteapp.com'
+                }
+            }
+        }
+    }
+}
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 17
+
+        versionCode 1
+        versionName '1.0.0'
+    }
+}
