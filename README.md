@@ -18,7 +18,7 @@ Add the dependency in `build.gradle`
 ```groovy
 dependencies {
   ....
-  compile 'com.omnipasteapp.droidbugfreak:BugFreak:1.0.0'
+  compile 'com.omnipasteapp.droidbugfreak:BugFreak:1.0.+'
   ....
 }
 ```
