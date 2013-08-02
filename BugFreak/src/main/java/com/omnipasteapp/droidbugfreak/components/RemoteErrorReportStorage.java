@@ -19,10 +19,7 @@ public class RemoteErrorReportStorage implements ErrorReportStorage {
 
     conn.connect();
     conn.getResponseCode();
-
-    if (conn != null) {
-      conn.disconnect();
-    }
+    conn.disconnect();
 
     return true;
   }

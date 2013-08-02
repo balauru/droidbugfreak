@@ -24,7 +24,7 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
       sign(request);
       write(report, request);
     } catch (Exception exc) {
-      // nothing will go wrong
+      // TODO: nothing will go wrong
     }
 
     return request;
@@ -55,9 +55,8 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
 
   private HttpURLConnection createConnection() throws Exception {
     URL url = new URL(GlobalConfig.Settings.getServiceEndPoint());
-    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
-    return urlConnection;
+    return (HttpURLConnection) url.openConnection();
   }
 
   public void setMethod(HttpURLConnection conn) throws Exception {

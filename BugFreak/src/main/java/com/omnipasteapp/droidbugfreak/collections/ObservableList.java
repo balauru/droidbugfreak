@@ -38,13 +38,13 @@ public class ObservableList<T> implements List<T> {
 
   private List<EventHandler<ListChangedEventArgs>> listChangedHandlers;
   private List<EventHandler<ListChangedEventArgs>> itemAddedHandlers;
-  private List<EventHandler<ListChangedEventArgs>> itemRemoveddHandlers;
+  private List<EventHandler<ListChangedEventArgs>> itemRemovedHandlers;
   private List<T> items;
 
   public ObservableList() {
     listChangedHandlers = new ArrayList<EventHandler<ListChangedEventArgs>>();
     itemAddedHandlers = new ArrayList<EventHandler<ListChangedEventArgs>>();
-    itemRemoveddHandlers = new ArrayList<EventHandler<ListChangedEventArgs>>();
+    itemRemovedHandlers = new ArrayList<EventHandler<ListChangedEventArgs>>();
     items = new ArrayList<T>();
   }
 
@@ -65,11 +65,11 @@ public class ObservableList<T> implements List<T> {
   }
 
   public void addItemRemovedListener(EventHandler<ListChangedEventArgs> handler) {
-    itemRemoveddHandlers.add(handler);
+    itemRemovedHandlers.add(handler);
   }
 
   public void removeItemRemovedListener(EventHandler<ListChangedEventArgs> handler) {
-    itemRemoveddHandlers.remove(handler);
+    itemRemovedHandlers.remove(handler);
   }
 
   public <EA> void raise(Iterable<EventHandler<EA>> handlers, Object sender, EA eventArgs) {
@@ -178,7 +178,7 @@ public class ObservableList<T> implements List<T> {
   public T remove(int location) {
     T item = items.remove(location);
 
-    raise(itemRemoveddHandlers, this, new ListChangedEventArgs(location, item));
+    raise(itemRemovedHandlers, this, new ListChangedEventArgs(location, item));
     raise(listChangedHandlers, this, new ListChangedEventArgs(location, item));
 
     return item;
@@ -189,7 +189,7 @@ public class ObservableList<T> implements List<T> {
     int location = indexOf(object);
     boolean result = items.remove(object);
 
-    raise(itemRemoveddHandlers, this, new ListChangedEventArgs(location, (T) object));
+    raise(itemRemovedHandlers, this, new ListChangedEventArgs(location, (T) object));
     raise(listChangedHandlers, this, new ListChangedEventArgs(location, (T) object));
 
     return result;

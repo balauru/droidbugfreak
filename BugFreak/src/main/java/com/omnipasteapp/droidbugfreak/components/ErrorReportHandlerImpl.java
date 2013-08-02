@@ -22,7 +22,7 @@ public class ErrorReportHandlerImpl implements ErrorReportHandler {
           break;
         }
       } catch (Throwable throwable) {
-
+        // TODO: do something when the error reporter crashes
       }
     }
   }

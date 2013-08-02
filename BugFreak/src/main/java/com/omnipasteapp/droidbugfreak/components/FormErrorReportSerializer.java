@@ -6,9 +6,9 @@ import com.omnipasteapp.droidbugfreak.utils.StringUtils;
 import java.util.Map;
 
 public class FormErrorReportSerializer implements ErrorReportSerializer {
-  private final String ContentType = "application/x-www-form-urlencoded";
-  private final String Format = "%s=%s";
-  private final String Separator = "&";
+  private static final String ContentType = "application/x-www-form-urlencoded";
+  private static final String Format = "%s=%s";
+  private static final String Separator = "&";
 
   public String getContentType() {
     return ContentType;
