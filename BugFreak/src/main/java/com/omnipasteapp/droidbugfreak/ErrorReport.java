@@ -1,6 +1,9 @@
 package com.omnipasteapp.droidbugfreak;
 
+import com.omnipasteapp.droidbugfreak.components.ErrorReportDataProvider;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class ErrorReport {
 
@@ -52,6 +55,15 @@ public class ErrorReport {
       stringBuilder.append(String.format("%s %s %d\r\n", element.getClassName(), element.getMethodName(), element.getLineNumber()));
     }
     report.setStackTrace(stringBuilder.toString());
+
+    // set additional data
+    for(ErrorReportDataProvider provider : GlobalConfig.getDataProviders()) {
+      HashMap<String, String> data = provider.getData();
+
+      for(String key : data.keySet()){
+        report.addData(key, data.get(key));
+      }
+    }
 
     return report;
   }
