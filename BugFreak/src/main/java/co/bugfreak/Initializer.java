@@ -1,5 +1,7 @@
 package co.bugfreak;
 
+import java.lang.reflect.Type;
+
 import co.bugfreak.components.ErrorReportHandler;
 import co.bugfreak.components.ErrorReportHandlerImpl;
 import co.bugfreak.components.ErrorReportQueue;
@@ -17,13 +19,18 @@ import co.bugfreak.framework.ServiceLocator;
 import co.bugfreak.framework.SimpleServiceLocator;
 import co.bugfreak.utils.StringUtils;
 
-import java.lang.reflect.Type;
-
 public class Initializer {
   public static void initialize() throws IllegalArgumentException {
+    setDefaults();
     verifySettings();
     initServices();
     initReporter();
+  }
+
+  private static void setDefaults() {
+    if (!isValidUrl(GlobalConfig.Settings.getServiceEndPoint())) {
+      GlobalConfig.Settings.setServiceEndPoint("http://bugfreak.co/v1/api/errors");
+    }
   }
 
   private static void verifySettings() throws IllegalArgumentException {

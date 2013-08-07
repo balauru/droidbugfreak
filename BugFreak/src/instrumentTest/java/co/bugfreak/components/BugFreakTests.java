@@ -43,22 +43,6 @@ public class BugFreakTests extends TestCase {
     }
   }
 
-  public void testInitializeWhenServiceEndpointNotSetRaisesIllegalArgumentException() {
-    IllegalArgumentException exception = null;
-    GlobalConfig.Settings.setToken("token");
-    GlobalConfig.Settings.setApiKey("apiKey");
-
-    try {
-      BugFreak.init();
-    } catch (IllegalArgumentException exc) {
-      exception = exc;
-    }
-
-    if (exception == null) {
-      Assert.fail();
-    }
-  }
-
   public void testInitializeWhenAllSettingsAreSetDoesNotRaiseException() {
     IllegalArgumentException exception = null;
     GlobalConfig.Settings.setToken("token");
@@ -74,5 +58,40 @@ public class BugFreakTests extends TestCase {
     if (exception != null) {
       Assert.fail();
     }
+  }
+
+  public void testInitializeWhenServiceEndpointNotSetDoesNotRaiseIllegalArgumentException() {
+    IllegalArgumentException exception = null;
+    GlobalConfig.Settings.setToken("token");
+    GlobalConfig.Settings.setApiKey("apiKey");
+
+    try {
+      BugFreak.init();
+    } catch (IllegalArgumentException exc) {
+      exception = exc;
+    }
+
+    if (exception != null) {
+      Assert.fail();
+    }
+  }
+
+  public void testInitializeWhenServiceEndpointNotSetSetsDefault() {
+    GlobalConfig.Settings.setToken("token");
+    GlobalConfig.Settings.setApiKey("apiKey");
+    GlobalConfig.Settings.setServiceEndPoint("http://google.ro");
+
+    BugFreak.init();
+
+    assertEquals("http://google.ro", GlobalConfig.Settings.getServiceEndPoint());
+  }
+
+  public void testInitializeWhenServiceEndpointIsSetDoesNotOverwrite() {
+    GlobalConfig.Settings.setToken("token");
+    GlobalConfig.Settings.setApiKey("apiKey");
+
+    BugFreak.init();
+
+    assertEquals("http://bugfreak.co/v1/api/errors", GlobalConfig.Settings.getServiceEndPoint());
   }
 }
