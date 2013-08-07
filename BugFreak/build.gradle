@@ -16,7 +16,7 @@ apply plugin: 'maven'
 apply plugin: 'signing'
 
 version '1.0.0'
-group 'com.omnipasteapp.droidbugfreak'
+group 'co.bugfreak'
 
 configurations {
     archives {
@@ -46,10 +46,10 @@ uploadArchives {
         }
 
         pom.project {
-            name 'DroidBugFreak'
+            name 'BugFreak'
             packaging 'aar'
-            description 'Android error reporting '
-            url 'https://github.com/Agilefreaks/droidbugfreak'
+            description 'Easily track your applications errors'
+            url 'http://bugfreak.co'
 
             scm {
                 url 'scm:git@github.com:Agilefreaks/droidbugfreak.git'
@@ -67,9 +67,15 @@ uploadArchives {
 
             developers {
                 developer {
-                    id 'dev'
-                    name 'Dev'
-                    email 'dev@omnipasteapp.com'
+                    id 'balauru'
+                    name 'Alexandru Calinoiu'
+                    email 'calinoiu.alexandru@agilefreaks.com'
+                }
+
+                developer {
+                    id 'pirvudoru'
+                    name 'Doru Pirvu'
+                    email 'doru.pirvu@agilefreaks.com'
                 }
             }
         }
