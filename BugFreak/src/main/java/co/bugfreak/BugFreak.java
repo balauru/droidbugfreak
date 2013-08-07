@@ -7,9 +7,12 @@ import co.bugfreak.components.ErrorReportHandler;
 import co.bugfreak.components.ErrorReportQueue;
 import co.bugfreak.components.ErrorReportQueueListener;
 
-public class AgileReporter implements ReportingService {
+public class BugFreak implements ReportingService {
 
   static ReportingService instance;
+
+  BugFreak() {
+  }
 
   public static void init() {
     Initializer.initialize();
@@ -17,25 +20,6 @@ public class AgileReporter implements ReportingService {
 
   public static ReportingService getInstance() {
     return instance;
-  }
-
-  AgileReporter() {
-  }
-
-  @Override
-  public void beginReport(Throwable exc) {
-    ErrorReport errorReport = createReport(exc);
-    queue(errorReport);
-  }
-
-  private ErrorReport createReport(Throwable exc) {
-    return ErrorReport.fromException(exc);
-  }
-
-  private void queue(ErrorReport errorReport) {
-    ErrorReportQueue errorReportQueue = GlobalConfig.getServiceLocator().getService(ErrorReportQueue.class);
-
-    errorReportQueue.enqueue(errorReport);
   }
 
   public static void dispose() {
@@ -57,10 +41,26 @@ public class AgileReporter implements ReportingService {
           @Override
           public void run() {
             instance.beginReport(ex);
-	    AgileReporter.dispose();
+            BugFreak.dispose();
           }
         }).start();
       }
     });
+  }
+
+  @Override
+  public void beginReport(Throwable exc) {
+    ErrorReport errorReport = createReport(exc);
+    queue(errorReport);
+  }
+
+  private ErrorReport createReport(Throwable exc) {
+    return ErrorReport.fromException(exc);
+  }
+
+  private void queue(ErrorReport errorReport) {
+    ErrorReportQueue errorReportQueue = GlobalConfig.getServiceLocator().getService(ErrorReportQueue.class);
+
+    errorReportQueue.enqueue(errorReport);
   }
 }

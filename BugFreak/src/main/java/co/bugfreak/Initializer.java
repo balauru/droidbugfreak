@@ -75,7 +75,7 @@ public class Initializer {
   }
 
   private static void initReporter() {
-    AgileReporter.instance = new AgileReporter();
+    BugFreak.instance = new BugFreak();
   }
 
   private static boolean isValidUrl(String url) {

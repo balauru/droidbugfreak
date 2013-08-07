@@ -3,10 +3,10 @@ package co.bugfreak.components;
 import junit.framework.Assert;
 import junit.framework.TestCase;
 
-import co.bugfreak.AgileReporter;
+import co.bugfreak.BugFreak;
 import co.bugfreak.GlobalConfig;
 
-public class AgileReporterTests extends TestCase {
+public class BugFreakTests extends TestCase {
 
   public void tearDown(){
     GlobalConfig.Settings.setToken(null);
@@ -18,7 +18,7 @@ public class AgileReporterTests extends TestCase {
     IllegalArgumentException exception = null;
 
     try {
-      AgileReporter.init();
+      BugFreak.init();
     } catch (IllegalArgumentException exc) {
       exception = exc;
     }
@@ -33,7 +33,7 @@ public class AgileReporterTests extends TestCase {
     GlobalConfig.Settings.setToken("token");
 
     try {
-      AgileReporter.init();
+      BugFreak.init();
     } catch (IllegalArgumentException exc) {
       exception = exc;
     }
@@ -49,7 +49,7 @@ public class AgileReporterTests extends TestCase {
     GlobalConfig.Settings.setApiKey("apiKey");
 
     try {
-      AgileReporter.init();
+      BugFreak.init();
     } catch (IllegalArgumentException exc) {
       exception = exc;
     }
@@ -66,7 +66,7 @@ public class AgileReporterTests extends TestCase {
     GlobalConfig.Settings.setServiceEndPoint("http://google.ro");
 
     try {
-      AgileReporter.init();
+      BugFreak.init();
     } catch (IllegalArgumentException exc) {
       exception = exc;
     }
