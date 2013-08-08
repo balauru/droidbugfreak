@@ -36,9 +36,10 @@ public class FormErrorReportSerializerTests extends TestCase {
         errorReport.setMessage("test message");
         errorReport.setStackTrace("stack trace");
         errorReport.addData("OS", "4.2");
+        errorReport.addData("API_LEVEL", "18");
 
         String result = subject.serialize(errorReport);
 
-        assertEquals("message=test%20message&stackTrace=stack%20trace&OS=4.2", result);
+        assertEquals("message=test%20message&stackTrace=stack%20trace&additionalData[OS]=4.2&additionalData[API_LEVEL]=18", result);
     }
 }
