@@ -39,7 +39,7 @@ public class CoolApplication extends Application {
     GlobalConfig.Settings.setServiceEndPoint("http://url.com");
 
     // hook the reported
-    AgileReporter.hook(this);
+    BugFreak.hook(this);
     
     ..........
   }
