@@ -29,7 +29,7 @@ public class Initializer {
 
   private static void setDefaults() {
     if (!isValidUrl(GlobalConfig.Settings.getServiceEndPoint())) {
-      GlobalConfig.Settings.setServiceEndPoint("http://bugfreak.co/v1/api/errors");
+      GlobalConfig.Settings.setServiceEndPoint("https://www.bugfreak.co/v1/api/errors");
     }
   }
 
