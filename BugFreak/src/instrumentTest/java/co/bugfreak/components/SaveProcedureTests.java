@@ -21,7 +21,7 @@ public class SaveProcedureTests extends TestCase {
     RemoteErrorReportStorage storage = new RemoteErrorReportStorage();
     ErrorReport errorReport = new ErrorReport();
     SaveReportCompletedCallback callback = mock(SaveReportCompletedCallback.class);
-    RemoteErrorReportStorage.SaveProcedure procedure = storage.new SaveProcedure(errorReport, callback);
+    RemoteErrorReportStorage.PostToServiceProcedure procedure = storage.new PostToServiceProcedure(errorReport, callback);
 
     Iterator<Result> result = procedure.iterator();
 
@@ -34,7 +34,7 @@ public class SaveProcedureTests extends TestCase {
     RemoteErrorReportStorage storage = new RemoteErrorReportStorage();
     ErrorReport errorReport = new ErrorReport();
     SaveReportCompletedCallback callback = mock(SaveReportCompletedCallback.class);
-    RemoteErrorReportStorage.SaveProcedure procedure = storage.new SaveProcedure(errorReport, callback);
+    RemoteErrorReportStorage.PostToServiceProcedure procedure = storage.new PostToServiceProcedure(errorReport, callback);
 
     Iterator<Result> result = procedure.iterator();
 

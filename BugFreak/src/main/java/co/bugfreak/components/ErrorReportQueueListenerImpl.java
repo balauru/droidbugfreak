@@ -4,7 +4,6 @@ import co.bugfreak.ErrorReport;
 import co.bugfreak.GlobalConfig;
 import co.bugfreak.collections.ObservableList;
 import co.bugfreak.framework.EventHandler;
-import co.bugfreak.framework.sequential.Sequentially;
 
 public class ErrorReportQueueListenerImpl implements ErrorReportQueueListener, EventHandler<ObservableList<ErrorReport>.ListChangedEventArgs> {
   private ErrorReportQueue errorReportQueue;
@@ -28,6 +27,6 @@ public class ErrorReportQueueListenerImpl implements ErrorReportQueueListener, E
 
   @Override
   public void handle(Object sender, ObservableList<ErrorReport>.ListChangedEventArgs eventArgs) {
-    Sequentially.execute(errorReportHandler.handle(eventArgs.getItem()));
+    errorReportHandler.handle(eventArgs.getItem());
   }
 }

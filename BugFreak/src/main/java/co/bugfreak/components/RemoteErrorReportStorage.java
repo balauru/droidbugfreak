@@ -18,15 +18,15 @@ public class RemoteErrorReportStorage implements ErrorReportStorage {
 
   @Override
   public void saveAsync(final ErrorReport errorReport, final SaveReportCompletedCallback callback) throws Throwable {
-    Sequentially.execute(new SaveProcedure(errorReport, callback));
+    Sequentially.execute(new PostToServiceProcedure(errorReport, callback));
   }
 
-  public class SaveProcedure extends Generator<Result> {
+  class PostToServiceProcedure extends Generator<Result> {
 
     private final ErrorReport errorReport;
     private final SaveReportCompletedCallback callback;
 
-    SaveProcedure(ErrorReport errorReport, SaveReportCompletedCallback callback) {
+    PostToServiceProcedure(ErrorReport errorReport, SaveReportCompletedCallback callback) {
       this.errorReport = errorReport;
       this.callback = callback;
     }
