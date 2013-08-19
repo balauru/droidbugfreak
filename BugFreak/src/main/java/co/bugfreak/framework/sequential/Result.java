@@ -1,4 +1,4 @@
-package co.bugfreak.framework;
+package co.bugfreak.framework.sequential;
 
 public interface Result {
   void addCompleteListener(ResultCompletedListener handler);

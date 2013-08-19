@@ -2,7 +2,7 @@ package co.bugfreak.components;
 
 import co.bugfreak.ErrorReport;
 import co.bugfreak.GlobalConfig;
-import co.bugfreak.framework.Result;
+import co.bugfreak.framework.sequential.Result;
 import co.bugfreak.results.SaveReportResult;
 import co.bugfreak.utils.Array;
 

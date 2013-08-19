@@ -4,8 +4,8 @@ import co.bugfreak.ErrorReport;
 import co.bugfreak.components.ErrorReportSaveCompletedArgs;
 import co.bugfreak.components.ErrorReportStorage;
 import co.bugfreak.components.SaveReportCompletedCallback;
-import co.bugfreak.framework.ExecutionContext;
-import co.bugfreak.framework.Result;
+import co.bugfreak.framework.sequential.ExecutionContext;
+import co.bugfreak.framework.sequential.Result;
 
 public class SaveReportResult extends ResultBase implements Result, SaveReportCompletedCallback {
 

@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 import co.bugfreak.ErrorReport;
 import co.bugfreak.components.ErrorReportStorage;
-import co.bugfreak.framework.ExecutionContext;
+import co.bugfreak.framework.sequential.ExecutionContext;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;

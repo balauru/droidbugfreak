@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import co.bugfreak.framework.Result;
+import co.bugfreak.framework.sequential.Result;
 
 public class Array {
   public static <T extends V, V> Iterable<V> of(Class<V> clazz, Iterable<T> elements) {

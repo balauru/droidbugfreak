@@ -2,6 +2,9 @@ package co.bugfreak.framework;
 
 import junit.framework.TestCase;
 
+import co.bugfreak.framework.sequential.ExecutionContext;
+import co.bugfreak.framework.sequential.Result;
+import co.bugfreak.framework.sequential.SequentialResult;
 import co.bugfreak.results.ResultBase;
 import co.bugfreak.utils.Array;
 

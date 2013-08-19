@@ -3,9 +3,9 @@ package co.bugfreak.results;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.bugfreak.framework.Result;
-import co.bugfreak.framework.ResultCompletedListener;
-import co.bugfreak.framework.ResultCompletedArgs;
+import co.bugfreak.framework.sequential.Result;
+import co.bugfreak.framework.sequential.ResultCompletedListener;
+import co.bugfreak.framework.sequential.ResultCompletedArgs;
 
 public abstract class ResultBase implements Result {
 

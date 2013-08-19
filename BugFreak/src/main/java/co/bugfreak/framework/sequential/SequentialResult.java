@@ -1,4 +1,4 @@
-package co.bugfreak.framework;
+package co.bugfreak.framework.sequential;
 
 import java.util.Iterator;
 

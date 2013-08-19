@@ -1,4 +1,4 @@
-package co.bugfreak.framework;
+package co.bugfreak.framework.sequential;
 
 public class ResultCompletedArgs {
   private Throwable error;

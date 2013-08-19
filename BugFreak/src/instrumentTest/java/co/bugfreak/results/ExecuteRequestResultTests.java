@@ -3,14 +3,12 @@ package co.bugfreak.results;
 import junit.framework.TestCase;
 
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatcher;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-import co.bugfreak.framework.ExecutionContext;
-import co.bugfreak.framework.ResultCompletedArgs;
-import co.bugfreak.framework.ResultCompletedListener;
+import co.bugfreak.framework.sequential.ResultCompletedArgs;
+import co.bugfreak.framework.sequential.ResultCompletedListener;
 
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;

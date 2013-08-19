@@ -2,9 +2,8 @@ package co.bugfreak.components;
 
 import co.bugfreak.ErrorReport;
 import co.bugfreak.GlobalConfig;
-import co.bugfreak.framework.ExecutionContext;
-import co.bugfreak.framework.Result;
-import co.bugfreak.framework.SequentialResult;
+import co.bugfreak.framework.sequential.Result;
+import co.bugfreak.framework.sequential.Sequentially;
 import co.bugfreak.framework.yieldreturn.Generator;
 import co.bugfreak.results.BuildReportRequestResult;
 import co.bugfreak.results.ExecuteRequestResult;
@@ -19,7 +18,7 @@ public class RemoteErrorReportStorage implements ErrorReportStorage {
 
   @Override
   public void saveAsync(final ErrorReport errorReport, final SaveReportCompletedCallback callback) throws Throwable {
-    new SequentialResult(new SaveProcedure(errorReport, callback)).execute(new ExecutionContext());
+    Sequentially.execute(new SaveProcedure(errorReport, callback));
   }
 
   public class SaveProcedure extends Generator<Result> {

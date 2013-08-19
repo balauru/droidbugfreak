@@ -5,8 +5,8 @@ import org.apache.http.HttpStatus;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-import co.bugfreak.framework.ExecutionContext;
-import co.bugfreak.framework.Result;
+import co.bugfreak.framework.sequential.ExecutionContext;
+import co.bugfreak.framework.sequential.Result;
 
 public class ExecuteRequestResult extends ResultBase implements Runnable, Result {
 

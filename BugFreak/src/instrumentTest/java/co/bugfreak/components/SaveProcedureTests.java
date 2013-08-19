@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import co.bugfreak.ErrorReport;
-import co.bugfreak.framework.Result;
+import co.bugfreak.framework.sequential.Result;
 import co.bugfreak.results.BuildReportRequestResult;
 import co.bugfreak.results.ExecuteRequestResult;
 import co.bugfreak.utils.Array;

@@ -4,7 +4,7 @@ import java.net.HttpURLConnection;
 
 import co.bugfreak.ErrorReport;
 import co.bugfreak.components.ReportRequestBuilder;
-import co.bugfreak.framework.ExecutionContext;
+import co.bugfreak.framework.sequential.ExecutionContext;
 
 public class BuildReportRequestResult extends ResultBase implements Runnable {
   private final ReportRequestBuilder reportRequestBuilder;
