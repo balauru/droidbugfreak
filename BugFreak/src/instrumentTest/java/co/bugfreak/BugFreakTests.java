@@ -1,4 +1,4 @@
-package co.bugfreak.components;
+package co.bugfreak;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
@@ -92,6 +92,6 @@ public class BugFreakTests extends TestCase {
 
     BugFreak.init();
 
-    assertEquals("http://bugfreak.co/v1/api/errors", GlobalConfig.Settings.getServiceEndPoint());
+    assertEquals("https://www.bugfreak.co/v1/api/errors", GlobalConfig.Settings.getServiceEndPoint());
   }
 }
