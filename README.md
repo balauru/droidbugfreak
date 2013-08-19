@@ -45,6 +45,11 @@ public class CoolApplication extends Application {
   }
 ```
 
+Inside AndroidManifest.xml request internet permission
+```xml
+<uses-permission android:name="android.permission.INTERNET"/>
+```
+
 Contributing
 ============
 
