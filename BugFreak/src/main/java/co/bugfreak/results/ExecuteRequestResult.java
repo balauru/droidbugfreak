@@ -9,10 +9,11 @@ import co.bugfreak.framework.ExecutionContext;
 import co.bugfreak.framework.Result;
 
 public class ExecuteRequestResult extends ResultBase implements Runnable, Result {
-  private final BuildReportRequestResult buildResult;
 
-  public ExecuteRequestResult(BuildReportRequestResult buildResult) {
-    this.buildResult = buildResult;
+  private final HttpURLConnection httpURLConnection;
+
+  public ExecuteRequestResult(HttpURLConnection httpURLConnection) {
+    this.httpURLConnection = httpURLConnection;
   }
 
   @Override
@@ -23,8 +24,6 @@ public class ExecuteRequestResult extends ResultBase implements Runnable, Result
   @Override
   public void run() {
     try {
-      HttpURLConnection httpURLConnection = buildResult.getResult();
-
       httpURLConnection.connect();
       int statusCode = httpURLConnection.getResponseCode();
       httpURLConnection.disconnect();

@@ -21,9 +21,7 @@ public class ExecuteRequestResultTests extends TestCase {
 
   public void testRunAlwaysExecutesRequest() {
     HttpURLConnection conn = mock(HttpURLConnection.class);
-    BuildReportRequestResult buildRequestResult = mock(BuildReportRequestResult.class);
-    when(buildRequestResult.getResult()).thenReturn(conn);
-    ExecuteRequestResult request = new ExecuteRequestResult(buildRequestResult);
+    ExecuteRequestResult request = new ExecuteRequestResult(conn);
 
     request.run();
 
@@ -39,9 +37,7 @@ public class ExecuteRequestResultTests extends TestCase {
     HttpURLConnection conn = mock(HttpURLConnection.class);
     when(conn.getResponseCode()).thenReturn(201);
     ResultCompletedListener mockListener = mock(ResultCompletedListener.class);
-    BuildReportRequestResult buildRequestResult = mock(BuildReportRequestResult.class);
-    when(buildRequestResult.getResult()).thenReturn(conn);
-    ExecuteRequestResult request = new ExecuteRequestResult(buildRequestResult);
+    ExecuteRequestResult request = new ExecuteRequestResult(conn);
     request.addCompleteListener(mockListener);
 
     request.run();
