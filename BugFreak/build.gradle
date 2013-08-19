@@ -85,12 +85,4 @@ uploadArchives {
 android {
     compileSdkVersion 18
     buildToolsVersion "18.0.1"
-
-    defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 18
-        
-        versionCode 1
-        versionName '1.0.0'
-    }
 }
