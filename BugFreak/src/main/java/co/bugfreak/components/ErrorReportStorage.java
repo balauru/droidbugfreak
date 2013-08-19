@@ -1,7 +1,8 @@
 package co.bugfreak.components;
 
 import co.bugfreak.ErrorReport;
+import co.bugfreak.framework.Result;
 
 public interface ErrorReportStorage {
-  boolean save(ErrorReport errorReport) throws Throwable;
+  void saveAsync(ErrorReport errorReport, SaveReportCompletedCallback callback) throws Throwable;
 }

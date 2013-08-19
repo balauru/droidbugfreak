@@ -4,7 +4,7 @@ import co.bugfreak.ErrorReport;
 
 public class LocalErrorReportStorage implements ErrorReportStorage {
   @Override
-  public boolean save(ErrorReport errorReport) throws Throwable {
-    return true;
+  public void saveAsync(ErrorReport errorReport, SaveReportCompletedCallback callback) throws Throwable {
+    callback.onSaveReportCompleted(this, new ErrorReportSaveCompletedArgs(true));
   }
 }

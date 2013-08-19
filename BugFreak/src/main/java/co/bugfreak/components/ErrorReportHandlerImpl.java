@@ -2,6 +2,9 @@ package co.bugfreak.components;
 
 import co.bugfreak.ErrorReport;
 import co.bugfreak.GlobalConfig;
+import co.bugfreak.framework.Result;
+import co.bugfreak.results.SaveReportResult;
+import co.bugfreak.utils.Array;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,33 +14,22 @@ public class ErrorReportHandlerImpl implements ErrorReportHandler {
   private List<ErrorReportStorage> storageLocations;
 
   public ErrorReportHandlerImpl() {
-    storageLocations = createList(GlobalConfig.getServiceLocator().getServices(ErrorReportStorage.class));
+    storageLocations = Array.toList(GlobalConfig.getServiceLocator().getServices(ErrorReportStorage.class));
   }
 
   @Override
-  public void handle(ErrorReport report) {
+  public Iterable<Result> handle(ErrorReport report) {
+    ArrayList<Result> results = new ArrayList<Result>();
+
     for (ErrorReportStorage storage : storageLocations) {
-      try {
-        if (storage.save(report)) {
-          break;
-        }
-      } catch (Throwable throwable) {
-        // TODO: do something when the error reporter crashes
-      }
+      results.add(new SaveReportResult(storage, report));
     }
+
+    return results;
   }
 
   @Override
   public void dispose() {
     storageLocations = null;
-  }
-
-  private <T> List<T> createList(Iterable<T> iterable) {
-    List<T> list = new ArrayList<T>();
-    for (T item : iterable) {
-      list.add(item);
-    }
-
-    return list;
   }
 }
