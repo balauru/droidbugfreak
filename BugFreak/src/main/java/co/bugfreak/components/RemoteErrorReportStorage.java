@@ -19,17 +19,28 @@ public class RemoteErrorReportStorage implements ErrorReportStorage {
 
   @Override
   public void saveAsync(final ErrorReport errorReport, final SaveReportCompletedCallback callback) throws Throwable {
-    new SequentialResult(new Generator<Result>() {
-      @Override
-      protected void run() {
-        BuildReportRequestResult buildRequest = new BuildReportRequestResult(reportRequestBuilder, errorReport);
-        yield(buildRequest);
+    new SequentialResult(new SaveProcedure(errorReport, callback)).execute(new ExecutionContext());
+  }
 
-        ExecuteRequestResult executeRequest = new ExecuteRequestResult(buildRequest.getResult());
-        yield(executeRequest);
+  public class SaveProcedure extends Generator<Result> {
 
-        callback.onSaveReportCompleted(RemoteErrorReportStorage.this, new ErrorReportSaveCompletedArgs(true));
-      }
-    }).execute(new ExecutionContext());
+    private final ErrorReport errorReport;
+    private final SaveReportCompletedCallback callback;
+
+    SaveProcedure(ErrorReport errorReport, SaveReportCompletedCallback callback) {
+      this.errorReport = errorReport;
+      this.callback = callback;
+    }
+
+    @Override
+    protected void run() {
+      BuildReportRequestResult buildRequest = new BuildReportRequestResult(reportRequestBuilder, errorReport);
+      yield(buildRequest);
+
+      ExecuteRequestResult executeRequest = new ExecuteRequestResult(buildRequest.getResult());
+      yield(executeRequest);
+
+      callback.onSaveReportCompleted(RemoteErrorReportStorage.this, new ErrorReportSaveCompletedArgs(true));
+    }
   }
 }

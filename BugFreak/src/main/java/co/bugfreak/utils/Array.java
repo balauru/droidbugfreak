@@ -2,6 +2,7 @@ package co.bugfreak.utils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import co.bugfreak.framework.Result;
@@ -29,6 +30,13 @@ public class Array {
     }
 
     return list;
+  }
+
+  public static <T> List<T> toList(Iterator<T> iter) {
+    List<T> copy = new ArrayList<T>();
+    while (iter.hasNext())
+      copy.add(iter.next());
+    return copy;
   }
 
   public static Iterable<Result> empty() {
