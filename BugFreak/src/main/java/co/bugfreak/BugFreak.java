@@ -29,7 +29,10 @@ public class BugFreak implements ReportingService {
     instance = null;
   }
 
-  public static void hook(Application app) {
+  public static void hook(String apiKey, String token, Application app) {
+    GlobalConfig.setApiKey(apiKey);
+    GlobalConfig.setToken(token);
+
     init();
 
     GlobalConfig.addDataProvider(new AndroidProvider(app));
