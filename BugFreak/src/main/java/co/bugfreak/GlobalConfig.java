@@ -1,14 +1,17 @@
 package co.bugfreak;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.bugfreak.components.ErrorReportDataProvider;
 import co.bugfreak.components.ErrorReportSerializer;
 import co.bugfreak.framework.ServiceLocator;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class GlobalConfig {
 
+  private static String serviceEndPoint;
+  private static String apiKey;
+  private static String token;
   private static List<ErrorReportDataProvider> providers = new ArrayList<ErrorReportDataProvider>();
   private static ServiceLocator serviceLocator;
   private static ErrorReportSerializer errorReportSerializer;
@@ -37,34 +40,28 @@ public class GlobalConfig {
     return providers;
   }
 
-  public static class Settings {
-    private static String serviceEndPoint;
-    private static String apiKey;
-    private static String token;
+  public static String getServiceEndPoint() {
+    return GlobalConfig.serviceEndPoint;
+  }
 
-    public static String getServiceEndPoint() {
-      return Settings.serviceEndPoint;
-    }
+  public static void setServiceEndPoint(String serviceEndPoint) {
+    GlobalConfig.serviceEndPoint = serviceEndPoint;
+  }
 
-    public static void setServiceEndPoint(String serviceEndPoint) {
-      Settings.serviceEndPoint = serviceEndPoint;
-    }
+  public static String getApiKey() {
+    return GlobalConfig.apiKey;
+  }
 
-    public static String getApiKey() {
-      return Settings.apiKey;
-    }
+  public static void setApiKey(String apiKey) {
+    GlobalConfig.apiKey = apiKey;
+  }
 
-    public static void setApiKey(String apiKey) {
-      Settings.apiKey = apiKey;
-    }
+  public static String getToken() {
+    return GlobalConfig.token;
+  }
 
-    public static String getToken() {
-      return Settings.token;
-    }
-
-    public static void setToken(String token) {
-      Settings.token = token;
-    }
+  public static void setToken(String token) {
+    GlobalConfig.token = token;
   }
 }
 

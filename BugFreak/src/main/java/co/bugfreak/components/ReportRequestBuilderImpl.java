@@ -49,12 +49,12 @@ public class ReportRequestBuilderImpl implements ReportRequestBuilder {
   }
 
   private void sign(HttpURLConnection request) {
-    request.setRequestProperty(ApiKey, GlobalConfig.Settings.getApiKey());
-    request.setRequestProperty(TokenKey, GlobalConfig.Settings.getToken());
+    request.setRequestProperty(ApiKey, GlobalConfig.getApiKey());
+    request.setRequestProperty(TokenKey, GlobalConfig.getToken());
   }
 
   private HttpURLConnection createConnection() throws Exception {
-    URL url = new URL(GlobalConfig.Settings.getServiceEndPoint());
+    URL url = new URL(GlobalConfig.getServiceEndPoint());
 
     return (HttpURLConnection) url.openConnection();
   }

@@ -28,19 +28,19 @@ public class Initializer {
   }
 
   private static void setDefaults() {
-    if (!isValidUrl(GlobalConfig.Settings.getServiceEndPoint())) {
-      GlobalConfig.Settings.setServiceEndPoint("https://www.bugfreak.co/v1/api/errors");
+    if (!isValidUrl(GlobalConfig.getServiceEndPoint())) {
+      GlobalConfig.setServiceEndPoint("https://www.bugfreak.co/v1/api/errors");
     }
   }
 
   private static void verifySettings() throws IllegalArgumentException {
-    if (StringUtils.isNullOrEmpty(GlobalConfig.Settings.getToken())) {
+    if (StringUtils.isNullOrEmpty(GlobalConfig.getToken())) {
       throw new IllegalArgumentException("Token not set");
     }
-    if (!isValidUrl(GlobalConfig.Settings.getServiceEndPoint())) {
+    if (!isValidUrl(GlobalConfig.getServiceEndPoint())) {
       throw new IllegalArgumentException("Invalid Service End Point");
     }
-    if (StringUtils.isNullOrEmpty(GlobalConfig.Settings.getApiKey())) {
+    if (StringUtils.isNullOrEmpty(GlobalConfig.getApiKey())) {
       throw new IllegalArgumentException("Api Key not set");
     }
   }
