@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compile 'co.bugfreak:BugFreak:1.0.2'
+    compile 'co.bugfreak:BugFreak:1.1.0'
 }
 
 android {
