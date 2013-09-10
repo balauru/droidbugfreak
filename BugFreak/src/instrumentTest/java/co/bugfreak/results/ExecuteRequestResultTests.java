@@ -41,7 +41,7 @@ public class ExecuteRequestResultTests extends TestCase {
     request.run();
 
     ArgumentCaptor<ResultCompletedArgs> argument = ArgumentCaptor.forClass(ResultCompletedArgs.class);
-    verify(mockListener).onCompleted(eq(request), argument.capture());
+    verify(mockListener).handle(eq(request), argument.capture());
     assertNull(argument.getValue().getError());
     assertTrue(argument.getValue().wasCancelled());
   }

@@ -3,16 +3,16 @@ package co.bugfreak.components;
 import co.bugfreak.ErrorReport;
 import co.bugfreak.collections.ObservableList;
 
-public class ErrorReportQueueImpl extends ObservableList<ErrorReport> implements ErrorReportQueue {
+public class ErrorQueueImpl extends ObservableList<PendingReport> implements ErrorQueue {
 
   @Override
-  public void enqueue(ErrorReport errorReport) {
+  public void enqueue(PendingReport errorReport) {
     add(errorReport);
   }
 
   @Override
-  public ErrorReport dequeue() {
-    ErrorReport result = null;
+  public PendingReport dequeue() {
+    PendingReport result = null;
 
     if (size() > 0) {
       result = remove(0);

@@ -4,5 +4,5 @@ import co.bugfreak.framework.sequential.Result;
 import co.bugfreak.framework.sequential.ResultCompletedArgs;
 
 public interface ResultCompletedListener {
-  void onCompleted(Result result, ResultCompletedArgs args);
+  void handle(Result result, ResultCompletedArgs args);
 }

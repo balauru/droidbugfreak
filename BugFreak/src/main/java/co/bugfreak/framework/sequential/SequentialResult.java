@@ -58,7 +58,7 @@ public class SequentialResult extends ResultBase implements Result, ResultComple
   }
 
   @Override
-  public void onCompleted(Result result, ResultCompletedArgs args) {
+  public void handle(Result result, ResultCompletedArgs args) {
     childCompleted(result, args);
   }
 }

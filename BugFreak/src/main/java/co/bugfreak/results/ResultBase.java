@@ -27,7 +27,7 @@ public abstract class ResultBase implements Result {
 
   protected void onCompleted(Throwable error, boolean wasCancelled) {
     for (ResultCompletedListener listener : completeListeners) {
-      listener.onCompleted(this, new ResultCompletedArgs(wasCancelled, error));
+      listener.handle(this, new ResultCompletedArgs(wasCancelled, error));
     }
   }
 }
