@@ -18,7 +18,7 @@ Add the dependency in `build.gradle`
 ```groovy
 dependencies {
   ....
-  compile 'co.bugfreak:BugFreak:1.0.+'
+  compile 'co.bugfreak:BugFreak:1.1.+'
   ....
 }
 ```
@@ -33,15 +33,8 @@ public class CoolApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    // set your configuration settings
-    GlobalConfig.Settings.setApiKey("apiKey");
-    GlobalConfig.Settings.setToken("token");
-    GlobalConfig.Settings.setServiceEndPoint("http://url.com");
-
     // hook the reported
-    BugFreak.hook(this);
-    
-    ..........
+    BugFreak.hook("apiKey", "token", this);
   }
 ```
 
