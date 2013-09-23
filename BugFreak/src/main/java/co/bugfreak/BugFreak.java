@@ -19,16 +19,6 @@ public class BugFreak implements ReportingService {
     errorHandler = GlobalConfig.getServiceLocator().getService(ErrorHandler.class);
   }
 
-  public static ReportingService getInstance() {
-    return instance;
-  }
-
-  public static void dispose() {
-    errorHandler.dispose();
-
-    instance = null;
-  }
-
   public static void hook(String apiKey, String token, Application app) {
     GlobalConfig.setApiKey(apiKey);
     GlobalConfig.setToken(token);
@@ -40,18 +30,16 @@ public class BugFreak implements ReportingService {
     Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
       @Override
       public void uncaughtException(Thread thread, final Throwable ex) {
-        instance.beginReport(ex);
+        beginReport(ex);
       }
     });
   }
 
-  @Override
-  public void beginReport(Throwable throwable) {
+  public static void beginReport(Throwable throwable) {
     beginReport(throwable, null);
   }
 
-  @Override
-  public void beginReport(Throwable throwable, ReportCompletedCallback reportCompletedCallback) {
+  public static void beginReport(Throwable throwable, ReportCompletedCallback reportCompletedCallback) {
     errorHandler.handle(throwable, reportCompletedCallback);
   }
 }
