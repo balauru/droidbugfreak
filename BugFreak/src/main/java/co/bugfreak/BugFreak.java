@@ -27,10 +27,21 @@ public class BugFreak implements ReportingService {
 
     GlobalConfig.addDataProvider(new AndroidProvider(app));
 
+    RegisterExceptionHandler();
+  }
+
+  private static void RegisterExceptionHandler() {
+    final Thread.UncaughtExceptionHandler defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+
     Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
       @Override
-      public void uncaughtException(Thread thread, final Throwable ex) {
-        beginReport(ex);
+      public void uncaughtException(final Thread thread, final Throwable ex) {
+        beginReport(ex, new ReportCompletedCallback() {
+          @Override
+          public void onCompleted(Throwable throwable, boolean reported) {
+            defaultHandler.uncaughtException(thread, ex);
+          }
+        });
       }
     });
   }
