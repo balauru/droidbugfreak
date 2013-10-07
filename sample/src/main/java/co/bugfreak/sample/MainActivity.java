@@ -21,7 +21,8 @@ public class MainActivity extends Activity {
         return true;
     }
 
+  @SuppressWarnings("UnusedParameters")
   public void throwException(View view) {
-    throw new RuntimeException();
+    throw new RuntimeException("Boom!");
   }
 }

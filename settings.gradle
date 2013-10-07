@@ -1,1 +1,1 @@
-include ':BugFreak'
+include ':BugFreak', ':sample'

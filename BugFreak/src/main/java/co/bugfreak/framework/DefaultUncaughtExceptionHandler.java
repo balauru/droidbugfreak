@@ -7,14 +7,13 @@ public class DefaultUncaughtExceptionHandler implements Thread.UncaughtException
 
   public static DefaultUncaughtExceptionHandler create() {
     Thread.UncaughtExceptionHandler originalHandler = Thread.getDefaultUncaughtExceptionHandler();
-    DefaultUncaughtExceptionHandler newHandler = new DefaultUncaughtExceptionHandler(originalHandler);
 
-    return newHandler;
+    return new DefaultUncaughtExceptionHandler(originalHandler);
   }
 
   private final Thread.UncaughtExceptionHandler defaultHandler;
 
-  public DefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler defaultHandler) {
+  private DefaultUncaughtExceptionHandler(Thread.UncaughtExceptionHandler defaultHandler) {
     this.defaultHandler = defaultHandler;
   }
 

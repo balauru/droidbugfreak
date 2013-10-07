@@ -37,6 +37,7 @@ public class BugFreak implements ReportingService {
     Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
   }
 
+  @SuppressWarnings("UnusedDeclaration")
   public static void beginReport(Throwable throwable) {
     beginReport(throwable, null);
   }
