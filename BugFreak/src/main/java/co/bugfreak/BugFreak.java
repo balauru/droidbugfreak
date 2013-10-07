@@ -4,6 +4,7 @@ import android.app.Application;
 
 import co.bugfreak.components.AndroidProvider;
 import co.bugfreak.components.ErrorHandler;
+import co.bugfreak.framework.DefaultUncaughtExceptionHandler;
 
 public class BugFreak implements ReportingService {
 
@@ -31,19 +32,9 @@ public class BugFreak implements ReportingService {
   }
 
   private static void RegisterExceptionHandler() {
-    final Thread.UncaughtExceptionHandler defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+    DefaultUncaughtExceptionHandler exceptionHandler = DefaultUncaughtExceptionHandler.create();
 
-    Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
-      @Override
-      public void uncaughtException(final Thread thread, final Throwable ex) {
-        beginReport(ex, new ReportCompletedCallback() {
-          @Override
-          public void onCompleted(Throwable throwable, boolean reported) {
-            defaultHandler.uncaughtException(thread, ex);
-          }
-        });
-      }
-    });
+    Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
   }
 
   public static void beginReport(Throwable throwable) {
