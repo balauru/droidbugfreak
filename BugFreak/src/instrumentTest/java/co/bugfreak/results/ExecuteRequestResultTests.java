@@ -13,7 +13,6 @@ import co.bugfreak.framework.sequential.ResultCompletedListener;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 
 public class ExecuteRequestResultTests extends TestCase {
 
@@ -31,9 +30,8 @@ public class ExecuteRequestResultTests extends TestCase {
     }
   }
 
-  public void testRunAlwaysCallsOnCompleteWithCanceledTrueWhenResponseCodeIs201() throws Throwable{
+  public void testRunAlwaysCallsOnCompleteWithCanceledFalse() throws Throwable{
     HttpURLConnection conn = mock(HttpURLConnection.class);
-    when(conn.getResponseCode()).thenReturn(201);
     ResultCompletedListener mockListener = mock(ResultCompletedListener.class);
     ExecuteRequestResult request = new ExecuteRequestResult(conn);
     request.addCompleteListener(mockListener);
@@ -43,6 +41,6 @@ public class ExecuteRequestResultTests extends TestCase {
     ArgumentCaptor<ResultCompletedArgs> argument = ArgumentCaptor.forClass(ResultCompletedArgs.class);
     verify(mockListener).handle(eq(request), argument.capture());
     assertNull(argument.getValue().getError());
-    assertTrue(argument.getValue().wasCancelled());
+    assertFalse(argument.getValue().wasCancelled());
   }
 }
