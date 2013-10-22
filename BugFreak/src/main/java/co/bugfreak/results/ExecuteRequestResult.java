@@ -23,6 +23,7 @@ public class ExecuteRequestResult extends ResultBase implements Runnable, Result
   public void run() {
     try {
       httpURLConnection.connect();
+      httpURLConnection.getResponseCode();
       httpURLConnection.disconnect();
 
       onCompleted(null, false);
