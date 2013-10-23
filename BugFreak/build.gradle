@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.6.3'
+        classpath 'com.android.tools.build:gradle:0.5.7'
     }
 }
 
@@ -15,7 +15,7 @@ apply plugin: 'android-library'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
-version '1.1.4'
+version '1.1.5'
 group 'co.bugfreak'
 
 configurations {
@@ -49,7 +49,7 @@ uploadArchives {
             name 'BugFreak'
             packaging 'aar'
             description 'Easily track your applications errors'
-            url 'http://bugfreak.co'
+            url 'https://bugfreak.co'
 
             scm {
                 url 'scm:git@github.com:Agilefreaks/droidbugfreak.git'
@@ -90,4 +90,16 @@ android {
         minSdkVersion 10
         targetSdkVersion 18
     }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+        }
+    }
+}
+
+task jar(type: Jar) {
+    from android.sourceSets.main.java
 }
